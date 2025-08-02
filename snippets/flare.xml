@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <remote name="flare"
+          fetch="https://github.com/Project-Flare-Staging/"
+          sync-c="true"
+          sync-j="4"
+          revision="refs/heads/sixteen" />
+
+  <!-- Remove project -->
+  <remove-project name="LineageOS/android" />
+  <remove-project name="LineageOS/android_bionic" />
+  <remove-project name="LineageOS/android_bootable_recovery" />
+  <remove-project name="LineageOS/android_bootable_deprecated-ota" />
+  <remove-project name="LineageOS/android_build" />
+  <remove-project name="LineageOS/android_build_soong" />
+  <remove-project name="LineageOS/android_frameworks_av" />
+  <remove-project name="LineageOS/android_frameworks_base" />
+  <remove-project name="LineageOS/android_frameworks_native" />
+  <remove-project name="LineageOS/android_packages_apps_Backgrounds" />
+  <remove-project name="LineageOS/android_packages_apps_Launcher3" />
+  <remove-project name="LineageOS/android_packages_apps_Settings" />
+  <remove-project name="LineageOS/android_packages_apps_SetupWizard" />
+  <remove-project name="LineageOS/android_packages_apps_Updater" />
+  <remove-project name="LineageOS/android_packages_apps_WallpaperPicker2" />
+  <remove-project name="LineageOS/android_vendor_lineage" />
+
+  <!-- Project Flare -->
+  <!-- Manifest -->
+  <project name="android" path="android" groups="pdk" remote="flare" />
+
+  <project name="android_bionic" path="bionic" groups="pdk" remote="flare" />
+  <project name="android_bootable_recovery" path="bootable/recovery" groups="pdk" remote="flare" />
+  <project name="android_bootable_deprecated-ota" path="bootable/deprecated-ota" groups="pdk-cw" remote="flare" />
+
+  <!-- Build -->
+  <project name="android_build" path="build/make" groups="pdk,sysui-studio" remote="flare" >
+    <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk" />
+    <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default" />
+    <linkfile src="core" dest="build/core" />
+    <linkfile src="envsetup.sh" dest="build/envsetup.sh" />
+    <linkfile src="target" dest="build/target" />
+    <linkfile src="tools" dest="build/tools" />
+  </project>
+
+  <project name="android_build_soong" path="build/soong" groups="pdk,tradefed,sysui-studio" remote="flare" >
+    <linkfile dest="Android.bp" src="root.bp" />
+    <linkfile dest="bootstrap.bash" src="bootstrap.bash" />
+  </project>
+
+  <!-- Frameworks -->
+  <project name="android_frameworks_av" path="frameworks/av" groups="pdk-cw-fs,pdk-fs,sysui-studio" remote="flare" />
+  <project name="android_frameworks_base" path="frameworks/base" groups="pdk-cw-fs,pdk-fs,sysui-studio" remote="flare" />
+  <project name="android_frameworks_native" path="frameworks/native" groups="pdk-cw-fs,pdk-fs,sysui-studio" remote="flare" />
+
+  <!-- Packages -->
+  <project name="android_packages_apps_Backgrounds" path="packages/apps/Backgrounds" groups="pdk-fs" remote="flare" />
+  <project name="android_packages_apps_Launcher3" path="packages/apps/Launcher3" groups="pdk-fs,sysui-studio" remote="flare" />
+  <project name="android_packages_apps_Settings" path="packages/apps/Settings" groups="pdk-fs" remote="flare" />
+  <project name="android_packages_apps_SetupWizard" path="packages/apps/SetupWizard" remote="flare" />
+  <project name="android_packages_apps_Updater" path="packages/apps/Updater" remote="flare" />
+  <project name="android_packages_apps_WallpaperPicker2" path="packages/apps/WallpaperPicker2" groups="pdk-fs,sysui-studio" remote="flare" />
+
+  <project name="android_vendor_lineage" path="vendor/lineage" remote="flare" />
+
+</manifest>
